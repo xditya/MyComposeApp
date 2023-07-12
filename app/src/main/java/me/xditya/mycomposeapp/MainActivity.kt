@@ -54,59 +54,63 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyComposeApp() {
     val ctx = LocalContext.current
-        Row(
-            Modifier
-                .fillMaxSize()
+    Row(
+        Modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
         ) {
-            Column (
-                modifier = Modifier
-                    .padding(16.dp)
-            ){
-                Card(
-                    shape = RoundedCornerShape(8.dp),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
-                ) {
-                    Column(
-                        Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth()
-                    ) {
-                        Text("Hello there!", style = MaterialTheme.typography.headlineLarge)
-                        Text(
-                            "This is a sample Jetpack Compose App!",
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                        //                Image(
-                        //                    painterResource(R.drawable.avatar),
-                        //                    contentDescription = "",
-                        //                    modifier = Modifier.size(50.dp)
-                        //                )
-                    }
-                }
-                Spacer(modifier = Modifier.height(25.dp))
-                Text(text = "This is supposed to be the body.", style = MaterialTheme.typography.bodyMedium)
-                Spacer(modifier = Modifier.height(25.dp))
-                var text by remember { mutableStateOf(TextFieldValue("")) }
-                TextField(
-                    value = text,
-                    onValueChange = { newText ->
-                        text = newText
-                    },
-                    label = { Text("Enter some text!") },
-                    modifier = Modifier
+            Card(
+                shape = RoundedCornerShape(8.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+            ) {
+                Column(
+                    Modifier
+                        .padding(8.dp)
                         .fillMaxWidth()
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    onClick = {
-                        Toast.makeText(ctx, text.text, Toast.LENGTH_SHORT).show()
-                    }
                 ) {
-                    Text("Click me!")
+                    Text("Hello there!", style = MaterialTheme.typography.headlineLarge)
+                    Text(
+                        "This is a sample Jetpack Compose App!",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    //                Image(
+                    //                    painterResource(R.drawable.avatar),
+                    //                    contentDescription = "",
+                    //                    modifier = Modifier.size(50.dp)
+                    //                )
                 }
             }
+            Spacer(modifier = Modifier.height(25.dp))
+            Text(
+                text = "This is supposed to be the body.",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Spacer(modifier = Modifier.height(25.dp))
+            var text by remember { mutableStateOf(TextFieldValue("")) }
+            TextField(
+                value = text,
+                onValueChange = { newText ->
+                    text = newText
+                },
+                label = { Text("Enter some text!") },
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                onClick = {
+                    Toast.makeText(ctx, text.text, Toast.LENGTH_SHORT).show()
+                    text = TextFieldValue("")
+                }
+            ) {
+                Text("Click me!")
+            }
         }
+    }
 }
 
 @Preview(showBackground = true)
