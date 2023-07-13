@@ -92,7 +92,7 @@ fun InfoScreen(
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     IconButton(onClick = {
-                        uriHandler.openUri("https://youtube.com/@xditys")
+                        uriHandler.openUri("https://youtube.com/@xditya")
                     }) {
                         Icon(
                             imageVector = FontAwesomeIcons.Brands.Youtube,
